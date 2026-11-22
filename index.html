@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SSN Live | Sony 3</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, sans-serif;
+      background: #0a0e14;
+      color: #f4f7fb;
+    }
+    body { margin: 0; }
+    main { display: grid; min-height: 100vh; min-height: 100dvh; }
+    iframe { width: 100%; height: 100%; border: 0; }
+    dialog {
+      box-sizing: border-box;
+      width: min(27rem, calc(100% - 2rem));
+      padding: 1.75rem;
+      border: 1px solid #364252;
+      border-radius: 1rem;
+      background: #161e29;
+      color: inherit;
+    }
+    dialog::backdrop { background: #0a0e14; }
+    h1 { margin: 0 0 .5rem; font-size: 1.5rem; }
+    p { margin: 0 0 1.5rem; color: #c3cedc; line-height: 1.5; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .75rem; }
+    button, .follow {
+      box-sizing: border-box;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: .6rem 1rem;
+      border: 1px solid #566578;
+      border-radius: .55rem;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button { background: transparent; color: inherit; }
+    .follow { background: #a6eed2; border-color: #a6eed2; color: #10271f; }
+    :focus-visible { outline: 2px solid #a6eed2; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main id="player" aria-label="Sony 3 player"></main>
+  <dialog id="follow-prompt" aria-labelledby="prompt-title" aria-describedby="prompt-description">
+    <h1 id="prompt-title">Follow me on GitHub</h1>
+    <p id="prompt-description">Follow Guru322 in a new tab, or choose Cancel to watch Sony 3.</p>
+    <form method="dialog" class="actions">
+      <button autofocus>Cancel</button>
+      <a class="follow" href="https://github.com/Guru322" target="_blank" rel="noopener noreferrer">Follow</a>
+    </form>
+  </dialog>
+  <noscript><p>Enable JavaScript to open the Sony 3 player.</p></noscript>
+  <script>
+    const prompt = document.querySelector('#follow-prompt');
+    const player = document.querySelector('#player');
+
+    prompt.addEventListener('close', () => {
+      const frame = document.createElement('iframe');
+      frame.title = 'Sony 3 live player';
+      frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.src = 'https://allrounder3-0.pages.dev/cricket/sony-3';
+      player.append(frame);
+    }, { once: true });
+
+    prompt.showModal();
+  </script>
+</body>
+</html>
