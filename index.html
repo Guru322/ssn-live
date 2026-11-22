@@ -65,6 +65,7 @@
       frame.title = 'Sony 3 live player';
       frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
       frame.allowFullscreen = true;
+      frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
       frame.src = 'https://allrounder3-0.pages.dev/cricket/sony-3';
       player.append(frame);
     }, { once: true });
